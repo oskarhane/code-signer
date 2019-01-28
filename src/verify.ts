@@ -5,6 +5,7 @@ import {VerifyCertResult, VerifyOptions, VerifyResult, VerifySignatureResult} fr
 
 export const verify = (options: VerifyOptions): VerifyResult => {
     const {data, signaturePem, rootCertificatePem} = options;
+    console.log('data: ', data);
 
     let isValid = false;
     let isTrusted = false;
@@ -13,6 +14,7 @@ export const verify = (options: VerifyOptions): VerifyResult => {
 
     try {
         ({certificate} = verifySignature(signaturePem, data));
+        console.log('certificate: ', certificate);
         ({isValid, isTrusted, error} = verifyCertificate(certificate, rootCertificatePem));
     } catch (e) {
         error = e;

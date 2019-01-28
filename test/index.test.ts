@@ -44,7 +44,7 @@ describe('neo4j-app-signer', () => {
         fs.writeFileSync(appSrc, 'Sample graph app');
         signature = path.join(appDir, 'signature.pem');
     });
-
+    
     it('should sign an app', async () => {
         await signApp(appDir, certPath, privateKeyPath);
         expect(fs.existsSync(signature)).toBeTruthy();
@@ -61,6 +61,14 @@ describe('neo4j-app-signer', () => {
 
         expect(result.status).toEqual('TRUSTED');
     });
+
+    it('should verify bloom package', async () => {
+        const appDir = path.join(__dirname, 'package')
+        const rootCert = fs.readFileSync(path.join(__dirname, 'root-cert.pem'), 'utf8')
+        
+        const result = await verifyApp(appDir, rootCert);
+        expect(result.status).toEqual('TRUSTED');
+    })
 
     it('should throw if a signed app has been modified', async () => {
         await signApp(appDir, certPath, privateKeyPath);

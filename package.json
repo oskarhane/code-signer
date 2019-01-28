@@ -15,16 +15,20 @@
     "prepack": "yarn build && yarn test"
   },
   "dependencies": {
+    "@types/debug": "^0.0.31",
+    "@types/minimatch": "^3.0.3",
     "@types/minimist": "1.2.0",
     "@types/node-forge": "0.7.10",
-    "folder-hash": "2.1.2",
+    "@types/tiny-async-pool": "^1.0.0",
+    "minimatch": "^3.0.4",
     "minimist": "1.2.0",
-    "node-forge": "0.7.6"
+    "node-forge": "0.7.6",
+    "tiny-async-pool": "^1.0.4"
   },
   "devDependencies": {
     "@types/fs-extra": "5.0.4",
     "@types/jest": "23.3.12",
-    "@types/node": "10.12.18",
+    "@types/node": "^10.12.18",
     "@types/tempy": "0.2.0",
     "fs-extra": "7.0.1",
     "jest": "23.6.0",

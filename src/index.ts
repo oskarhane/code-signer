@@ -33,7 +33,9 @@ export const verifyApp = async (appPath: string, rootCertificatePem?: string): P
     }
 
     const digest = await digestDirectory(appPath, [SIGNATURE_FILENAME]);
+    console.log('digest: ', digest);
     const signaturePem = fs.readFileSync(signaturePath, 'utf8');
+    console.log('signaturePem: ', signaturePem);
     const result = verify({
         data: digest,
         rootCertificatePem,
